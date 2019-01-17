@@ -1,0 +1,35 @@
+<div layout="column" layout-align="center center" id="login">
+    <mat-card>
+        <mat-card-content>
+            <form #signinForm="ngForm" (ngSubmit)="login()">
+                <div layout="column">
+                    <div layout="row" layout-align="center center">
+                        <img [src]="'../../../assets/images/logo-pti.png'" class="image-logo" alt="Logo PTI">
+                    </div>
+                    <div layout="column" class="pad-top">
+                        <div layout="row">
+                            <mat-input-container flex>
+                                <input matInput required name="email" placeholder="Login" [(ngModel)]="usuario.email" autofocus/>
+                                <mat-icon matSuffix>supervisor_account</mat-icon>
+                            </mat-input-container>
+                        </div>
+                        <div layout="row">
+                            <mat-input-container flex>
+                                <input type="password" matInput placeholder="Senha" [(ngModel)]="usuario.senha" required name="senha"/>
+                                <mat-icon matSuffix>lock</mat-icon>
+                            </mat-input-container>
+                        </div>
+                    </div>
+                    <div layout="column" layout-align="end center" class="pad-top" flex>
+                        <button mat-raised-button type="submit">
+                            Entrar
+                        </button>
+                    </div>
+                    <vertical-space></vertical-space>
+                    <a class="esqueceu-sua-senha" [routerLink]="['/recuperar-senha']">Esqueceu sua senha?</a>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div id="bottom"></div>

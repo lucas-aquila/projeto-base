@@ -1,0 +1,42 @@
+#Configuração destinada ao ambiente de homologação
+#GENERAL
+spring:
+
+#DATA SOURCE
+  datasource:
+    url: jdbc:postgresql://CHANGE-ME:5432/CHANGE-ME
+    username: CHANGE-ME
+    password: CHANGE-ME
+    hikari.maximum-pool-size: 3
+
+#JPA
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
+    
+#STATIC RESOURCES
+  resources.chain:
+    cache: false
+    
+#FLYWAY
+  flyway:
+    enabled: true
+    
+    
+#MAIL
+  mail:
+    host: CHANGE-ME
+    port: 587
+    username: CHANGE-ME
+    password: CHANGE-ME
+    #from> pego na classe AsyncMailRepository
+    from: CHANGE-ME
+    properties:
+      #mail.smtp.auth: true
+      mail.transport.protocol: smtp
+      mail.smtp.starttls.enable: true
+      #mail.smtp.starttls.required: true
+      #mail.smtp.ssl.enable: false
+      mail.smtps.debug: true
+      mail.smtp.debug: true
+      mail.debug: true

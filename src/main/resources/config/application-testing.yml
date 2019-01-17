@@ -1,0 +1,23 @@
+#Configuração destinada ao ambiente de testes (do pti)
+#GENERAL
+spring:
+
+#DATA SOURCE
+  datasource:
+    url: jdbc:postgresql://CHANGE-ME:5432/CHANGE
+    username: CHANGE-ME
+    password: CHANGE-ME
+    hikari.maximum-pool-size: 3
+
+#JPA
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: true
+    
+#STATIC RESOURCES
+  resources.chain:
+    cache: false
+    
+#FLYWAY
+  flyway:
+    enabled: true

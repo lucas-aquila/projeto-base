@@ -1,0 +1,55 @@
+package br.org.pti.basi.domain.service;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cglib.core.internal.LoadingCache;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LoginAttemptService {
+ 
+    private final int MAX_ATTEMPT = 10;
+    //private LoadingCache<String, Integer> attemptsCache;
+    Cache attemptsCache;
+    private CacheManager cacheManager;
+    public LoginAttemptService() {
+        super();
+        ConcurrentMapCacheManager cm = new ConcurrentMapCacheManager();
+        Cache cache = cm.createConcurrentMapCache("addresses");//cacheManager.getCache("attemptsCache");
+        
+        attemptsCache = cacheManager.getCache("attemptsCache");
+        /*CacheBuilder.newBuilder().
+          expireAfterWrite(1, TimeUnit.DAYS).build(new CacheLoader<String, Integer>() {
+            public Integer load(String key) {
+                return 0;
+            }
+        });*/
+    }
+ 
+    public void loginSucceeded(String key) {
+        attemptsCache.evict(key);
+    }
+ 
+    public void loginFailed(String key) {
+        int attempts = 0;
+        try {
+            attempts = Integer.parseInt(attemptsCache.get(key).toString());
+        } catch (Exception e) {
+            attempts = 0;
+        }
+        attempts++;
+        attemptsCache.put(key, attempts);
+    }
+ 
+    public boolean isBlocked(String key) {
+        try {
+            return Integer.parseInt(attemptsCache.get(key).toString()) >= MAX_ATTEMPT;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+}

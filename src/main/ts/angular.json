@@ -1,0 +1,97 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "web": {
+      "root": "src",
+      "sourceRoot": "src/web",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "../resources/META-INF/resources/modules",
+            "index": "src/web/index.html",
+            "main": "src/web/application/web-main.ts",
+            "tsConfig": "src/web/../tsconfig.app.json",
+            "polyfills": "src/web/../polyfills.ts",
+            "assets": [
+              "src/web/assets",
+              "src/web/favicon.ico"
+            ],
+            "styles": [
+              "src/theme.scss",
+              "node_modules/@covalent/core/common/platform.scss",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/nprogress/nprogress.css",
+              "src/assets/styles/nprogress.css"
+            ],
+            "scripts": [
+              "node_modules/nprogress/nprogress.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/web/../environments/environment.ts",
+                  "with": "src/web/../environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [],
+            "exclude": []
+          }
+        }
+      }
+    },
+    "web-e2e": {
+      "root": "src/e2e",
+      "sourceRoot": "src/e2e",
+      "projectType": "application"
+    }
+  },
+  "defaultProject": "web",
+  "schematics": {
+    "@schematics/angular:component": {
+      "spec": false,
+      "prefix": "web",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "web"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="toolbar" layout="row" flex>
+    <div layout="column">
+        <div class="headline" [innerHTML]="headline"></div>
+        <div class="subhead" [innerHTML]="subhead"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+        <button mat-raised-button type="button" color="accent" [routerLink]="[backLink]">
+            <mat-icon>arrow_back</mat-icon>
+            <span>Voltar</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <button mat-raised-button type="button" 
+            [ngClass]="{'activate': !entity.status, 'inactivate': entity.status}" 
+            (click)="updateStatusEntity()">
+            <mat-icon>{{ !entity.status ? 'check' : 'block' }}</mat-icon>
+            <span>{{ !entity.status ? 'Ativar' : 'Inativar' }}</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <a mat-raised-button type="button" color="primary" [routerLink]="[editLink]">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+        </a>
+    </div>
+</div>
+<mat-card id="default-form">
+    <div layout="row">
+        <div layout="column" flex>
+            <label class="title">Nome</label>
+            <label class="text">{{ entity.nome }}</label>
+        </div>
+        <horizontal-space></horizontal-space>
+        <div layout="column" flex>
+            <label class="title">Sigla</label>
+            <label class="text">{{ entity.sigla }}</label>
+        </div>
+        <horizontal-space></horizontal-space>
+        <div layout="column" flex>
+            <label class="title">Status</label>
+            <label class="text">{{ entity.status ? labelStatus.active : labelStatus.inactive }}</label>
+        </div>
+    </div>
+    <vertical-space *ngIf="hasDescription"></vertical-space>
+    <div layout="row" *ngIf="hasDescription">
+        <div layout="column" flex>
+            <label class="title">Descrição</label>
+            <label class="text"><pre>{{ entity.descricao || '-' }}</pre></label>
+        </div>        
+    </div>
+</mat-card>

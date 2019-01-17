@@ -1,0 +1,38 @@
+<div layout="column" layout-align="center center" id="login">
+    <mat-card>
+        <mat-card-content>
+            <form #form="ngForm" (ngSubmit)="createPassword(form)">
+                <div layout="column">
+                    <div layout="row" layout-align="center center">
+                        <img [src]="'../../../assets/images/logo-pti.png'" class="image-logo" alt="Logo PTI">
+                    </div>
+                    <div layout="column" class="pad-top">
+                        <div layout="row">
+                            <mat-input-container flex [formGroup]="passForm">
+                                <input matInput type="password" placeholder="Nova senha" name="senha"
+                                    [(ngModel)]="usuario.senha" maxlength="100" formControlName="senha" required/>
+                                    <mat-icon matSuffix>lock</mat-icon>
+                                    <mat-hint *ngIf="senha.errors && (senha.dirty || senha.touched)" class="msg-error">
+                                        Mín. de 8 caracteres com letras, números e caracteres especiais
+                                    </mat-hint>
+                            </mat-input-container>
+                        </div>
+                        <div layout="row">
+                            <mat-input-container flex>
+                                <input matInput type="password" placeholder="Confirmar nova senha" name="confirmarSenha" 
+                                    [(ngModel)]="usuario.confirmarSenha" maxlength="100" required/>
+                                    <mat-icon matSuffix>lock</mat-icon>
+                            </mat-input-container>
+                        </div>
+                    </div>
+                    <div layout="column" layout-align="end center" class="pad-top" flex>
+                        <button mat-raised-button type="submit" style="width:auto">
+                            Cadastrar senha
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div id="bottom"></div>

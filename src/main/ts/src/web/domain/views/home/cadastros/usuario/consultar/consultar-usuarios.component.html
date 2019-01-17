@@ -1,0 +1,67 @@
+<div class="toolbar" layout="row" flex (keyup.esc)="clearFilters()">
+    <div layout="column">
+        <div class="headline" [innerHTML]="homeView.toolbar.headline"></div>
+        <div class="subhead" [innerHTML]="homeView.toolbar.subhead"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Buscar" name="text" [(ngModel)]="filters.text" (ngModelChange)="debounce(this, listByFiltersStatement)"/>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <horizontal-space></horizontal-space>
+        <mat-form-field>
+            <mat-select placeholder="Status" [(ngModel)]="filters.status" (ngModelChange)="listByFilters(true)">
+                <mat-option [value]="''">Todos</mat-option>
+                <mat-option [value]="'true'">Ativo</mat-option>
+                <mat-option [value]="'false'">Inativo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <horizontal-space [horizontalMargin]="15"></horizontal-space>
+        <a mat-raised-button color="primary" [routerLink]="['adicionar']">
+            <mat-icon>add</mat-icon>
+            <span>Adicionar</span>
+        </a>
+    </div>
+</div>
+<div id="default-table">
+    <mat-table #table
+        [dataSource]="dataSource" 
+        matSort 
+        matSortActive="nome" 
+        matSortDisableClear 
+        matSortDirection="asc">
+
+        <ng-container [matColumnDef]="column.name" *ngFor="let column of columns">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{ column.label }}</mat-header-cell>
+            <mat-cell *matCellDef="let data"><a [routerLink]="['detalhes/' + data.id]" ellipsis>{{ data[column.name] || '-' }}</a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="organizacao">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Organização</mat-header-cell>
+            <mat-cell *matCellDef="let data"><a [routerLink]="['detalhes/' + data.id]">{{ data.organizacao?.nome || '-' }}</a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+            <mat-cell *matCellDef="let data"><a [routerLink]="['detalhes/' + data.id]">{{ data.status ? 'Ativo' : 'Inativo' }}</a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+            <mat-header-cell *matHeaderCellDef class="actions">Ações</mat-header-cell>
+            <mat-cell *matCellDef="let data" class="actions">
+                <a mat-button type="button" [routerLink]="['editar/' + data.id]">
+                    <mat-icon>edit</mat-icon> Editar
+                </a>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let data; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <no-records-found [dataSource]="dataSource?.data"></no-records-found>
+    <mat-paginator 
+        [length]="totalElements" 
+        [hidePageSize]="true"
+        (page)="listByFilters(false)">
+    </mat-paginator>
+</div>

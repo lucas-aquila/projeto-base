@@ -1,0 +1,54 @@
+<div class="toolbar" layout="row" flex>
+    <div layout="column">
+        <div class="headline" [innerHTML]="homeView.toolbar.headline"></div>
+        <div class="subhead" [innerHTML]="homeView.toolbar.subhead"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+        <button mat-raised-button type="button" color="accent" [routerLink]="['/usuarios']">
+            <mat-icon>arrow_back</mat-icon>
+            <span>Voltar</span>
+        </button>
+        <horizontal-space></horizontal-space>
+        <div style="margin-right:20px" *ngIf="!itsMe">
+            <button mat-raised-button type="button" 
+                [ngClass]="{'activate': !usuario.status, 'inactivate': usuario.status}" 
+                (click)="updateStatus()">
+                <mat-icon>{{ !usuario.status ? 'check' : 'block' }}</mat-icon>
+                <span>{{ !usuario.status ? 'Ativar' : 'Inativar' }}</span>
+            </button>
+        </div>
+        <a mat-raised-button type="button" color="primary" [routerLink]="['/usuarios/editar/' + usuario.id]">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+        </a>
+    </div>
+</div>
+<mat-card id="default-form">
+    <div layout="row">
+        <div layout="column" flex>
+            <label class="title">Nome</label>
+            <label class="text">{{ usuario.nome }}</label>
+        </div>
+        <horizontal-space></horizontal-space>
+        <div layout="column" flex>
+            <label class="title">E-mail</label>
+            <label class="text">{{ usuario.email }}</label>
+        </div>
+        <horizontal-space></horizontal-space>
+        <div layout="column" flex>
+            <label class="title">Organização</label>
+            <label class="text" *ngIf="usuario.organizacao">{{ usuario.organizacao.nome }} ({{ usuario.organizacao.sigla }})</label>
+            <label class="text" *ngIf="!usuario.organizacao">-</label>
+        </div>
+        <horizontal-space></horizontal-space>
+        <div layout="column" flex>
+            <label class="title">Status</label>
+            <label class="text">{{ usuario.status ? 'Ativo' : 'Inativo' }}</label>
+        </div>
+    </div>
+    <vertical-space></vertical-space>
+    <div layout="column">
+        <label class="title">Perfis de acesso</label>
+        <label class="text" *ngFor="let perfil of usuario.perfis">{{ perfil | translate }}</label>
+    </div>
+</mat-card>

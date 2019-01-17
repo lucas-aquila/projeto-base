@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>You have a new support message</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+  
+    @media (min-width: 550px) {
+	       table[class="body"] {
+	        padding-bottom: 50px !important;
+	        padding-top: 50px !important;
+	       }
+	       
+          .email-logo-masthead {
+            display: inline !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            width: 220px !important;
+          }
+        }
+      
+        .email-content {
+         /* border-left: 1px solid #002E63 !important;
+          border-right: 1px solid #002E63 !important;*/
+          box-shadow: 0px 5px 15px #ddd;
+          border-top: 6px solid #002E63;
+          border-radius: 1%;
+        }
+      
+        .email-content-block {
+          padding-left: 50px !important;
+          padding-right: 50px !important;
+
+        }
+  </style>
+</head>
+
+<body style="background-color: #F8F9FE; height: 100%; margin: 0; padding: 0;">
+  <div style="display:none;font-size:1px;color:#f6f8f8;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Just a quick note letting you know you have a new support message from Simple.</div>
+  <table class="body" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f6f8f8; height: 100%; padding-bottom: 25px; padding-left: 0; padding-right: 0; padding-top: 25px;">
+    <tbody>
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr>
+                <td width="550">
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <table class="" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                              <td>
+                                <img class="email-logo-masthead" th:src="'cid:' + ${logo}" style="display: block; margin-bottom: 25px; margin-left: auto; margin-right: auto; width: 220px; heigth: auto !important;">                              </td>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="email-content" style="background-color: #FFFFFF;box-shadow: 0px 5px 15px #ddd;" >
+                          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                              <tr>
+                                <td class="email-content-block copy" style='font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; padding-left: 25px; padding-right: 25px; padding-top: 50px;'>
+                                  <h2 style='margin: 0 0 0.5rem 0; line-height: 1.25; font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; color: #002E63; font-size: 2.5rem; font-weight: 900; font-style: normal;'>Bem vindo ao BASI</h2>
+
+                                  <p style='margin-bottom: 15px; font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; font-weight: 400; font-size: 16px; line-height: 1.5;'>Agora você tem acesso a plataforma de gerenciamento de projetos do Parque Tecnológico Itaipu.</p>
+                                                                                                 <p style='margin-bottom: 15px; font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; font-weight: 400; font-size: 16px; line-height: 1.5;'>Abaixo segue o seu login, favor acessar a plataforma e cadastrar uma senha para a sua conta.</p>
+
+                                  <p style='margin-bottom: 15px; font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; font-weight: 400; font-size: 16px; line-height: 1.5;'><b>Login:</b> <span th:text="${user.email}"></span></p>
+                                  <div style='font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important;'>
+                                    <div class="section" style='font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; padding: 30px 0;'>
+                                      <a class="button" th:href="${url}" target="_blank" style='color: white; font-family: "Avenir Next" "Helvetica", sans-serif !important; background-color: #002E63; border-radius: 3px; padding: 15px 0; text-decoration: none;display:block;width:100%;text-align:center'>Cadastrar senha</a> 
+                                    </div>
+                                  </div>
+                                  <!--p class="signout light-type" style='margin-bottom: 15px; font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; font-weight: 400; font-size: 16px; line-height: 1.5; color: #788991;'>— Equipe BASI</p-->
+                                  <div class="padding-break" style='font-family: "Avenir Next", "Roboto", "Helvetica", sans-serif !important; margin-top: 50px;'></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

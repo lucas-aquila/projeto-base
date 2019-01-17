@@ -1,0 +1,6 @@
+<form-page
+    [subhead]="'Setor'"
+    [entity]="setor"
+    [backLink]="'/setores'"
+    (save)="!setor.id ? insert($event) : update($event)">
+</form-page>

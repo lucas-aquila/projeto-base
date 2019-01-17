@@ -1,0 +1,65 @@
+<div class="toolbar" layout="row" flex (keyup.esc)="clearFilters()">
+    <div layout="column">
+        <div class="headline" [innerHTML]="headline"></div>
+        <div class="subhead" [innerHTML]="subhead"></div>
+    </div>
+    <div layout="row" layout-align="end center" flex>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Buscar" name="text" [(ngModel)]="filters.text" (ngModelChange)="debounce(this, listByFiltersStatement)"/>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <horizontal-space></horizontal-space>
+        <mat-form-field>
+            <mat-select placeholder="Status" [(ngModel)]="filters.status" (ngModelChange)="listByFilters(true)">
+                <mat-option [value]="''">{{ labelStatus.all }}</mat-option>
+                <mat-option [value]="'true'">{{ labelStatus.active }}</mat-option>
+                <mat-option [value]="'false'">{{ labelStatus.inactive }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <horizontal-space [horizontalMargin]="15"></horizontal-space>
+        <a mat-raised-button color="primary" [routerLink]="['adicionar']">
+            <mat-icon>add</mat-icon>
+            <span>Adicionar</span>
+        </a>
+    </div>
+</div>
+<div id="default-table">
+    <mat-table #table
+        [dataSource]="dataSource" 
+        matSort 
+        matSortActive="nome" 
+        matSortDisableClear 
+        matSortDirection="asc">
+
+        <ng-container [matColumnDef]="column.name" *ngFor="let column of columns">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{ column.label }}</mat-header-cell>
+            <mat-cell *matCellDef="let data"><a [routerLink]="['detalhes/' + data.id]" ellipsis>{{ data[column.name] || '-' }}</a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+            <mat-cell *matCellDef="let data"><a [routerLink]="['detalhes/' + data.id]">{{ data.status ? labelStatus.active : labelStatus.inactive }}</a></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acoes">
+            <mat-header-cell *matHeaderCellDef class="actions">Ações</mat-header-cell>
+            <mat-cell *matCellDef="let data" class="actions">
+                <a mat-button type="button" [routerLink]="['editar/' + data.id]">
+                    <mat-icon>edit</mat-icon> Editar
+                </a>
+                <button mat-button type="button" class="delete-button" (click)="openDeleteDialog(data)">
+                    <mat-icon>delete_forever</mat-icon> Excluir
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let data; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <no-records-found [dataSource]="dataSource?.data"></no-records-found>
+    <mat-paginator 
+        [length]="totalElements" 
+        [hidePageSize]="true"
+        (page)="listByFilters()">
+    </mat-paginator>
+</div>

@@ -1,0 +1,54 @@
+<form #form="ngForm" novalidate>
+    <div class="toolbar" layout="row" flex>
+        <div layout="column">
+            <div class="headline" [innerHTML]="homeView.toolbar.headline"></div>
+            <div class="subhead" [innerHTML]="homeView.toolbar.subhead"></div>
+        </div>
+        <div layout="row" layout-align="end center" flex>
+            <button mat-raised-button type="button" color="accent" [routerLink]="['/usuarios']">
+                <mat-icon>arrow_back</mat-icon>
+                <span>Voltar</span>
+            </button>
+            <horizontal-space></horizontal-space>
+            <button mat-raised-button type="button" color="primary" (click)="!usuario?.id ? insert(form) : update(form)">
+                <mat-icon>save</mat-icon>
+                <span>Salvar</span>
+            </button>
+        </div>
+    </div>
+    <mat-card id="default-form">
+        <div layout="row">
+            <mat-form-field flex>
+                <input matInput placeholder="Nome" name="nome" [(ngModel)]="usuario.nome" maxlength="100" required/>
+            </mat-form-field>
+            <horizontal-space></horizontal-space>
+            <mat-form-field flex>
+                <input matInput placeholder="E-mail" name="email" [(ngModel)]="usuario.email" maxlength="150" required/>
+            </mat-form-field>
+            <horizontal-space></horizontal-space>
+            <mat-form-field flex>
+                <input matInput placeholder="Organização" name="organizacao" 
+                    [(ngModel)]="usuario.organizacao" (keyup)="debounce(this,listOrganizacoes); error = isString(usuario.organizacao)"
+                    [matAutocomplete]="auto" (blur)="normalizeOrganizacao()">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayNomeOrganizacao">
+                    <mat-option *ngFor="let organizacao of organizacoes" [value]="organizacao">
+                        {{ organizacao.nome }}
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-hint *ngIf="error" class="msg-error">
+                    Nenhuma organização válida foi selecionada.
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div layout="column">
+            <label class="title">Perfis de acesso *</label>
+            <div layout="row">
+                <mat-radio-group [(ngModel)]="usuario.perfis[0]" name="perfis" [disabled]="itsMe" required>
+                    <mat-radio-button color="{{ !itsMe ? 'primary' : 'accent' }}" *ngFor="let perfil of perfis" [value]="perfil">
+                        {{ perfil | translate }}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </mat-card>
+</form>

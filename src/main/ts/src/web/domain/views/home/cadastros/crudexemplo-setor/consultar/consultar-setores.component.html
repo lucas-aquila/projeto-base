@@ -1,0 +1,10 @@
+<list-page 
+    [subhead]="'Setor'" 
+    [gender]="'M'" 
+    [dataSource]="dataSource"
+    [columns]="columns"
+    [displayedColumns]="displayedColumns"
+    [totalElements]="totalElements"
+    (list)="listByFilters($event)"
+    (delete)="openDeleteDialog($event)">
+</list-page>

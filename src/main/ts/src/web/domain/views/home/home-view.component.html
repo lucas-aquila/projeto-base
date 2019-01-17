@@ -1,0 +1,113 @@
+<mat-sidenav-container> 
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img [src]="'../../../assets/images/logo-pti-preto.png'" class="image-logo-preto" alt="Logo PTI">
+    </mat-toolbar>
+
+    <!-- MENU LATERAL -->
+    <mat-sidenav #sidenav mode="over" [opened]="false">
+        
+        <div layout="row" class="menu-top" *ngIf="usuario" flex>
+            <div layout="column" [style.position]="'relative'" (click)="openDialogChangePassword()" matTooltip="Alterar senha">
+                <button mat-icon-button class="btn-primary">
+                    {{ usuario.nome | userInitials }}
+                </button>
+                <mat-icon matSuffix class="change-password">settings</mat-icon>
+            </div>
+            <horizontal-space [horizontalMargin]="5"></horizontal-space>
+            <div layout="column">
+                <h3>{{ usuario.nome }}</h3>
+                <label *ngIf="usuario?.email.length <= 24">{{ usuario.email }}</label>
+                <label matTooltip="{{ usuario?.email }}" *ngIf="usuario?.email.length > 24">{{ usuario.email | truncate:21 }}</label>
+            </div>
+        </div>
+        
+        <mat-nav-list class="pad-none" *ngIf="usuario" flex>
+            <mat-list class="pad-none">
+
+                <a class="menu-routers" (click)="sidenav.close()" 
+                    [routerLink]="['/foo']" 
+                    routerLinkActive 
+                    #rlaProjetos="routerLinkActive" 
+                    [ngClass]="{'menu-active': rlaProjetos.isActive}">
+                    <mat-list-item>
+                        <div layout="row" class="menu-item">
+                            <mat-icon>view_list</mat-icon>
+                            <h3>Placeholder</h3>
+                        </div>
+                    </mat-list-item>
+                </a>
+
+
+                <td-expansion-panel *ngIf="usuario?.isAdministrador" 
+                    [expand]="rlaSetores.isActive 
+                    || rlaUsuarios.isActive"
+                    [ngClass]="{'expansion-menu-active': rlaSetores.isActive
+                    || rlaUsuarios.isActive}">
+                    <ng-template td-expansion-panel-label>
+                        <div layout="row" class="menu-item">
+                            <mat-icon>archive</mat-icon>
+                            <h3>Cadastros</h3>
+                        </div>
+                    </ng-template>
+
+                    <a (click)="sidenav.close()" 
+                        [routerLink]="['/setores']" 
+                        routerLinkActive 
+                        #rlaSetores="routerLinkActive" 
+                        [ngClass]="{'submenu-active': rlaSetores.isActive}">
+                        <mat-list-item>
+                            <div layout="row" class="submenu-item" flex>
+                                <h3>Setor</h3>
+                            </div>
+                        </mat-list-item>
+                    </a>
+
+                    <a (click)="sidenav.close()" 
+                        [routerLink]="['/usuarios']" 
+                        routerLinkActive 
+                        #rlaUsuarios="routerLinkActive" 
+                        [ngClass]="{'submenu-active': rlaUsuarios.isActive}">
+                        <mat-list-item>
+                            <div layout="row" class="submenu-item" flex>
+                                <h3>Usuário</h3>
+                            </div>
+                        </mat-list-item>
+                    </a>
+                </td-expansion-panel>
+
+                <a class="menu-routers">
+                    <mat-list-item>
+                        <div layout="row" class="menu-item">
+                            <mat-icon>equalizer</mat-icon>
+                            <h3>Relatórios</h3>
+                        </div>
+                    </mat-list-item>
+                </a>
+
+            </mat-list>
+        </mat-nav-list>
+        
+        <div layout="column" class="menu-bottom" flex>
+            <div layout="row" layout-align="center center">
+                <img [src]="'../../../assets/images/logo-pti.png'" class="image-logo" alt="Logo PTI">
+            </div>
+            <mat-divider></mat-divider>
+            <div layout="row" layout-align="center start">
+                <button mat-button (click)="logout()" flex>
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Sair</span>
+                </button>
+            </div>
+        </div>
+
+    </mat-sidenav>
+
+    <!-- ROTEAMENTO DE COMPONENTES DA APLICAÇÃO -->
+    <div id="main-content">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>

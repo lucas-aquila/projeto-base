@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ficha" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13f5623d-ff29-41ce-bb1e-a961dc1ef316">
+	<property name="ireport.zoom" value="1.6105100000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="820"/>
+	<parameter name="documentoGerador" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="qrcodeList" class="java.util.List"/>
+	<parameter name="tipoResiduo" class="java.lang.String"/>
+	<parameter name="codigo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 1;]]>
+	</queryString>
+	<group name="role">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="enabled">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#617056" uuid="fa4aa5ed-eee8-400d-af4a-14e359b43bac"/>
+				<staticText>
+					<reportElement positionType="Float" x="20" y="20" width="555" height="72" forecolor="#FFFFFF" uuid="ab8e8c98-0481-4faa-a8fc-f53a524f3c15"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[SMRS - Sistema de Monitoramento de Resíduos Sólidos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="183">
+			<frame>
+				<reportElement x="23" y="13" width="165" height="165" uuid="732c4cfc-8722-4d1b-8123-f0933b872b32"/>
+				<image>
+					<reportElement x="17" y="36" width="128" height="128" uuid="f30d3c9a-5a46-4581-83cc-9728e716b7e4"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 0 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="18" y="0" width="128" height="13" uuid="7e1b4c9f-7e79-4f44-a03e-5677abddae83"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="12" width="51" height="12" uuid="ad65f123-f85c-499d-a597-792de02ff1a4"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="52" y="23" width="44" height="13" uuid="02e16688-1760-404b-b3c7-45092df02308"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="67" y="12" width="93" height="12" uuid="ed08d671-c1ca-4f11-8093-57c98a975ec2"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="95" y="23" width="62" height="13" uuid="f5e37502-7fe2-40bb-bc42-d9b38466e860"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="195" y="13" width="165" height="165" uuid="11dafd7e-e943-4ace-a262-44faa0c65922"/>
+				<image>
+					<reportElement x="16" y="37" width="128" height="128" uuid="15075a7a-0e8d-405d-8af9-b2b904bc6c1d"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 1 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="15" y="0" width="128" height="13" uuid="0f3cb190-3bf0-4c4c-9f4d-b834b0d8f294"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="64" y="12" width="93" height="12" uuid="b91ae11d-beb0-4976-80b1-cb37190a4d50"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="49" y="23" width="44" height="13" uuid="9c9d1c0b-67ae-4355-b733-54dd3e4915b6"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="12" width="51" height="12" uuid="13ff0cdb-a317-48ec-acf8-797e4a20dd18"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="23" width="62" height="13" uuid="642f1d8c-da1f-46cb-8fc2-1995a8ed374c"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="367" y="13" width="165" height="165" uuid="2cf88446-2cf8-423e-97d5-1e0b21371a2e"/>
+				<image>
+					<reportElement x="16" y="37" width="128" height="128" uuid="d06db4cf-de3a-4835-b76c-1842ce75ccee"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 2 )]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="50" y="23" width="44" height="13" uuid="da393441-498d-45d3-bda2-b6a1decaf110"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="47852cb3-a5e7-4511-9469-4e890d2bf706"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="6f09433f-b72b-4026-bfcb-9efccbb88d2e"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="65" y="12" width="93" height="12" uuid="63255519-1153-49fb-ba50-5eb10c3e892a"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="16" y="0" width="128" height="13" uuid="b27325fd-67fd-4c40-b106-1e11ed8b3718"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="176">
+			<frame>
+				<reportElement x="365" y="7" width="165" height="165" uuid="6e947000-11c3-4096-a829-34bb0704dc64"/>
+				<image>
+					<reportElement x="16" y="37" width="128" height="128" uuid="193da7f9-8080-4ca9-9c6a-81df005d278b"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 5 )]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="50" y="23" width="44" height="13" uuid="5c7d4904-8a5c-4aa1-9bc2-8c0e10d79a8a"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="a40ecab0-eb14-43fd-80b4-6284cc92db4c"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="f34447ea-7362-427d-818b-112cedfcc1f5"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="65" y="12" width="93" height="12" uuid="f811a42d-b456-4768-8594-a813caa55529"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="16" y="0" width="128" height="13" uuid="c1988011-b9dd-48ae-bd5a-4186643c2f06"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="193" y="7" width="165" height="165" uuid="52c938b5-c895-4886-bbc8-b6e9904e3948"/>
+				<image>
+					<reportElement x="16" y="37" width="128" height="128" uuid="97eb2ce9-8ca5-480d-a3a9-4b570cf8b598"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 4 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="15" y="0" width="128" height="13" uuid="b2c09998-f33c-421e-b3ad-80f3c3e7cadd"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="64" y="12" width="93" height="12" uuid="01eca1a7-2c0e-4e8a-af5d-7e539581bd8b"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="49" y="23" width="44" height="13" uuid="30686d39-47aa-48c0-b707-673565e1b073"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="12" width="51" height="12" uuid="73933221-afa4-4e4e-ba4a-8579efc8c1c9"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="23" width="62" height="13" uuid="7f2ea5fe-f503-4cda-9ad7-b7839dd05cb9"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="21" y="7" width="165" height="165" uuid="978ad495-1716-40fa-a0d5-a2f427cadde8"/>
+				<image>
+					<reportElement x="17" y="36" width="128" height="128" uuid="d7a30bc9-75bc-4b03-8ba4-0472c030df35"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 3 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="18" y="0" width="128" height="13" uuid="32b2131d-6f82-429d-89dc-8de74eab6ec3"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="12" width="51" height="12" uuid="da36e3ad-eea9-4d88-bcb3-2921ba58e059"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="52" y="23" width="44" height="13" uuid="35861eb2-1800-465c-b92b-d512b4b8af3e"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="67" y="12" width="93" height="12" uuid="b95cbcfb-e61f-4719-b5d9-f52d4fb20e2b"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="95" y="23" width="62" height="13" uuid="7f0a709f-a7c5-4578-b9a3-c91efb094159"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="177">
+			<frame>
+				<reportElement x="365" y="4" width="165" height="165" uuid="70316650-baff-4f79-bcb9-f9c33267968c"/>
+				<image>
+					<reportElement x="17" y="37" width="128" height="128" uuid="393f84dc-5c31-4a33-b09d-fe69e4951d12"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 8 )]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="51" y="23" width="44" height="13" uuid="76a98da8-82b2-4398-8621-7aaf678e7cda"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="23675b98-d7b0-431a-8c6a-31c61a7a19d0"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="0221f6a0-85bc-4854-9eb5-b09e2f362aa8"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="66" y="12" width="93" height="12" uuid="cdf614e6-9476-4788-bcd5-787e61b43d89"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="17" y="0" width="128" height="13" uuid="8be2a839-690f-4a61-b96f-27fadc4ba535"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="193" y="4" width="165" height="165" uuid="9c5ccf42-a364-4f75-a99a-f373fbe0463b"/>
+				<image>
+					<reportElement x="17" y="37" width="128" height="128" uuid="d7ade54c-0c6c-4b0f-ab81-5cf57fe53951"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 7 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="16" y="0" width="128" height="13" uuid="ba663af7-b3b6-477e-baff-982855cdbf95"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="65" y="12" width="93" height="12" uuid="d3942551-da6c-4ba7-9bc3-10cc82650736"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="50" y="23" width="44" height="13" uuid="a4b3447d-1c5d-43c1-bf1c-af2024c7c796"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="8724060e-c855-4acf-abe2-6259945ec7dc"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="a9d60a62-f731-447c-86b9-e710753db575"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="21" y="4" width="165" height="165" uuid="9a17e1e6-d2dc-4dd8-bbe2-827543ef4e06"/>
+				<image>
+					<reportElement x="17" y="36" width="128" height="128" uuid="47bc4c72-3524-4bcc-ab79-4d205c46aea9"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 6 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="18" y="0" width="128" height="13" uuid="c7064f7c-d7a9-439b-9728-d0de8a08f548"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="12" width="51" height="12" uuid="8fc586b5-5d35-4b05-8790-982c2f2510de"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="52" y="23" width="44" height="13" uuid="e4910eff-bcdd-4bc2-a3de-7501b5a4e2cd"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="67" y="12" width="93" height="12" uuid="ac8ea951-ba0e-4885-81fb-c28c4dca4131"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="95" y="23" width="62" height="13" uuid="c117049d-10b9-409e-8ac0-e09055bf30f8"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="176">
+			<frame>
+				<reportElement x="365" y="5" width="165" height="165" uuid="6444a796-9d3a-4ca2-a029-bac2a953788e"/>
+				<image>
+					<reportElement x="17" y="37" width="128" height="128" uuid="9b1d8bd3-4f13-4484-8339-733b33c8d21d"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 11 )]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="51" y="23" width="44" height="13" uuid="687614a4-9f1c-412d-b821-a434747bc619"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="720ffdd6-0a20-45df-a054-02f93d2da2a0"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="dcd87ff8-8efc-40ae-b435-2ab41dd1718f"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="66" y="11" width="93" height="12" uuid="df21b99e-c41f-42ac-983f-7bf2da3d6b63"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="17" y="0" width="128" height="13" uuid="3d0cf045-7a3d-4ed8-b2b2-c3bd526f2dac"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="193" y="5" width="165" height="165" uuid="4feab473-e9af-4770-9c97-2b2902d0fc8b"/>
+				<image>
+					<reportElement x="17" y="37" width="128" height="128" uuid="3da379ab-27f1-46c7-95c9-1c0afe706feb"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 10 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="16" y="0" width="128" height="13" uuid="5f0970df-4636-4ced-a0e1-828caf4636b6"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="65" y="12" width="93" height="12" uuid="5be172a6-de82-4d24-9f5f-af3bd971f1c7"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="50" y="23" width="44" height="13" uuid="f71508e8-8a81-40c6-81e9-bfc688c71041"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="13" y="12" width="51" height="12" uuid="a5ed9d43-d615-43eb-a302-f0669b675922"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="93" y="23" width="62" height="13" uuid="9c92bad9-f2a3-4350-b87d-3db5402def9c"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="21" y="5" width="165" height="165" uuid="7daccb53-4523-4f0a-873f-a1fa157bfb86"/>
+				<image>
+					<reportElement x="17" y="36" width="128" height="128" uuid="e8f01e39-5db9-4870-94a5-d26d22931f34"/>
+					<imageExpression><![CDATA[$P{qrcodeList}.get( 9 )]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="18" y="0" width="128" height="13" uuid="7c95bf1a-4568-4b56-bffb-c3fcf61e8f58"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{tipoResiduo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="15" y="12" width="51" height="12" uuid="877dfb8c-8c07-446d-bc25-a128dcb12c22"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Gerador:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="52" y="22" width="44" height="13" uuid="6360b0fc-92ea-4e82-b371-eb1f8f27e1a1"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="67" y="11" width="93" height="12" uuid="42df773d-7a1b-40e5-82d9-441ef2de66df"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{documentoGerador}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="95" y="22" width="62" height="13" uuid="dd4868c7-9c1b-4153-89cf-e6259c21c92b"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

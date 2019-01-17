@@ -1,0 +1,36 @@
+<form #form="ngForm" novalidate id="change-password-dialog">
+    <h1 mat-dialog-title style="color: #002E63">Alterar senha</h1>
+    <div layout="column">
+        <mat-form-field flex>
+            <input matInput type="password" placeholder="Senha atual" name="senhaAtual" 
+                [(ngModel)]="usuarioDialog.senhaAtual" maxlength="100" required/>
+                <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+        <horizontal-space></horizontal-space>
+        <mat-form-field flex [formGroup]="passForm">
+            <input matInput type="password" placeholder="Nova senha" name="novaSenha" formControlName="novaSenha"
+             [(ngModel)]="usuarioDialog.novaSenha" maxlength="100" (change)="markAsTouched()" required/>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint *ngIf="novaSenha.errors && (novaSenha.dirty || novaSenha.touched)" class="msg-error">
+                    Mínimo de 8 caracteres com letras, números e caracteres especiais
+                </mat-hint>
+        </mat-form-field>
+        <horizontal-space></horizontal-space>
+        <mat-form-field flex>
+            <input matInput type="password" placeholder="Confirmar nova senha" name="confirmarNovaSenha" 
+                [(ngModel)]="usuarioDialog.confirmarNovaSenha" maxlength="100" required/>
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint *ngIf="novaSenhaTouched && usuarioDialog.confirmarNovaSenha != novaSenha.value && (novaSenha.dirty || novaSenha.touched)" class="msg-error">
+                    As senhas não conferem
+                </mat-hint>
+        </mat-form-field>
+    </div>
+
+    <div id="space"></div>
+    <mat-divider></mat-divider>
+    
+    <div mat-dialog-actions>
+        <button mat-button color="accent" mat-dialog-close cdkFocusInitial>Cancelar</button>
+        <button mat-button color="primary" (click)="updateSenhaUsuario(form)">Confirmar</button>
+    </div>
+</form>
